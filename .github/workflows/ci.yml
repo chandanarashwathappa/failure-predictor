@@ -28,3 +28,20 @@ jobs:
         with:
           name: results
           path: results/
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build -t failure-predictor .
+
+      - name: Tests inside the container
+        run: docker run --rm failure-predictor pytest -q
+
+      - name: Train and evaluate inside the container
+        run: |
+          mkdir -p docker-results && chmod 777 docker-results
+          docker run --rm -v "$PWD/docker-results:/app/results" failure-predictor
+          test -f docker-results/metrics.json && cat docker-results/metrics.md

@@ -85,6 +85,21 @@ pytest -v          # data, leakage and model-quality tests
 python train.py    # trains all models, writes results/ (metrics + plots), ~1-2 min
 ```
 
+### With Docker
+
+The image contains the pinned Python environment, the code and the dataset, so a run is
+reproducible on any machine. CI builds the image on every push and runs the tests and
+the full training inside the container.
+
+```sh
+docker build -t failure-predictor .
+docker run --rm failure-predictor pytest -q                                   # tests
+docker run --rm -v "$(pwd)/results:/app/results" failure-predictor            # train, keep results
+```
+
+The container runs as an unprivileged user (uid 1000). On Linux, make the mounted
+`results/` folder writable for that user.
+
 ## Project structure
 
 ```
@@ -95,6 +110,7 @@ train.py          runs everything, writes results/
 tests/            pytest: dataset, leakage, features, split, model quality
 results/          metrics.json, metrics.md and plots from the last run
 data/             AI4I 2020 CSV (UCI, CC BY 4.0)
+Dockerfile        reproducible container (python:3.11-slim, pinned packages, non-root user)
 ```
 
 ## How this project was built
