@@ -1,0 +1,179 @@
+{
+  "dataset": {
+    "rows": 10000,
+    "failures": 339,
+    "train_rows": 8000,
+    "test_rows": 2000,
+    "test_failures": 68
+  },
+  "models": {
+    "Always 'no failure'": {
+      "physics_features": false,
+      "default_threshold": {
+        "threshold": 0.5,
+        "accuracy": 0.966,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "pr_auc": 0.034,
+        "roc_auc": 0.5,
+        "tn": 1932,
+        "fp": 0,
+        "fn": 68,
+        "tp": 0
+      },
+      "tuned_threshold": {
+        "threshold": 0.5,
+        "accuracy": 0.966,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "pr_auc": 0.034,
+        "roc_auc": 0.5,
+        "tn": 1932,
+        "fp": 0,
+        "fn": 68,
+        "tp": 0
+      }
+    },
+    "Logistic regression (raw sensors)": {
+      "physics_features": false,
+      "default_threshold": {
+        "threshold": 0.5,
+        "accuracy": 0.825,
+        "precision": 0.14213197969543148,
+        "recall": 0.8235294117647058,
+        "f1": 0.24242424242424243,
+        "pr_auc": 0.38170307203718523,
+        "roc_auc": 0.9069464742418707,
+        "tn": 1594,
+        "fp": 338,
+        "fn": 12,
+        "tp": 56
+      },
+      "tuned_threshold": {
+        "threshold": 0.88,
+        "accuracy": 0.958,
+        "precision": 0.375,
+        "recall": 0.35294117647058826,
+        "f1": 0.36363636363636365,
+        "pr_auc": 0.38170307203718523,
+        "roc_auc": 0.9069464742418707,
+        "tn": 1892,
+        "fp": 40,
+        "fn": 44,
+        "tp": 24
+      }
+    },
+    "Logistic regression (+ physics features)": {
+      "physics_features": true,
+      "default_threshold": {
+        "threshold": 0.5,
+        "accuracy": 0.8595,
+        "precision": 0.18018018018018017,
+        "recall": 0.8823529411764706,
+        "f1": 0.29925187032418954,
+        "pr_auc": 0.42965888917832457,
+        "roc_auc": 0.9384666910242359,
+        "tn": 1659,
+        "fp": 273,
+        "fn": 8,
+        "tp": 60
+      },
+      "tuned_threshold": {
+        "threshold": 0.92,
+        "accuracy": 0.9675,
+        "precision": 0.5319148936170213,
+        "recall": 0.36764705882352944,
+        "f1": 0.43478260869565216,
+        "pr_auc": 0.42965888917832457,
+        "roc_auc": 0.9384666910242359,
+        "tn": 1910,
+        "fp": 22,
+        "fn": 43,
+        "tp": 25
+      }
+    },
+    "Random forest (raw sensors)": {
+      "physics_features": false,
+      "default_threshold": {
+        "threshold": 0.5,
+        "accuracy": 0.9815,
+        "precision": 0.8163265306122449,
+        "recall": 0.5882352941176471,
+        "f1": 0.6837606837606838,
+        "pr_auc": 0.7550659456610987,
+        "roc_auc": 0.9632695469492144,
+        "tn": 1923,
+        "fp": 9,
+        "fn": 28,
+        "tp": 40
+      },
+      "tuned_threshold": {
+        "threshold": 0.35,
+        "accuracy": 0.9785,
+        "precision": 0.6582278481012658,
+        "recall": 0.7647058823529411,
+        "f1": 0.7074829931972789,
+        "pr_auc": 0.7550659456610987,
+        "roc_auc": 0.9632695469492144,
+        "tn": 1905,
+        "fp": 27,
+        "fn": 16,
+        "tp": 52
+      }
+    },
+    "Random forest (+ physics features)": {
+      "physics_features": true,
+      "default_threshold": {
+        "threshold": 0.5,
+        "accuracy": 0.992,
+        "precision": 0.9482758620689655,
+        "recall": 0.8088235294117647,
+        "f1": 0.873015873015873,
+        "pr_auc": 0.8783321829079016,
+        "roc_auc": 0.9840191511387163,
+        "tn": 1929,
+        "fp": 3,
+        "fn": 13,
+        "tp": 55
+      },
+      "tuned_threshold": {
+        "threshold": 0.44,
+        "accuracy": 0.9925,
+        "precision": 0.9491525423728814,
+        "recall": 0.8235294117647058,
+        "f1": 0.8818897637795275,
+        "pr_auc": 0.8783321829079016,
+        "roc_auc": 0.9840191511387163,
+        "tn": 1929,
+        "fp": 3,
+        "fn": 12,
+        "tp": 56
+      }
+    }
+  },
+  "best_model": "Random forest (+ physics features)",
+  "best_model_recall_per_failure_mode": {
+    "TWF": {
+      "n": 10,
+      "caught": 2
+    },
+    "HDF": {
+      "n": 29,
+      "caught": 28
+    },
+    "PWF": {
+      "n": 13,
+      "caught": 12
+    },
+    "OSF": {
+      "n": 16,
+      "caught": 16
+    },
+    "RNF": {
+      "n": 0,
+      "caught": 0
+    }
+  }
+}
